@@ -408,3 +408,7 @@ function validAnagram(s1: string, s2: string): boolean {
 }
 
 console.log(validAnagram("anagram", "naagram"));
+
+import { learnInheritance } from "./oop/oop";
+
+learnInheritance();

@@ -1,3 +1,4 @@
+import { type } from "os";
 export const learnOOP = () => {
   //class Cha
   class Human {
@@ -87,3 +88,140 @@ export const learnOOP = () => {
 // đa hình (polymorphism) ==> cùng phuơng thức, có thể làm nhiều hành động khác nhau
 // trừu tượng (abstraction) => ẩn đi những cái xử lý logic bên trong và chỉ show ra bên ngoài những cái chức năng dễ hiểu
 // ===> thể hiện qua typescript như thế nào ?
+
+export const learnInheritance = () => {
+  class Animal {
+    //khai bao thuoc tinh
+    private type: string;
+    //ham khoi tao
+    constructor(type: string) {
+      console.log("type", type);
+      this.type = type;
+    }
+    set setType(type: string) {
+      this.type = type;
+    }
+
+    get getType(): string {
+      return this.type;
+    }
+
+    static sound() {
+      console.log("tieng hu");
+    }
+
+    public eat() {
+      console.log("an ga");
+    }
+    private hieulon() {
+      console.log("hieu lon");
+    }
+    get hieuLon(): void {
+      return this.hieulon();
+    }
+  }
+
+  // console.log(Animal.eat());
+  console.log(Animal.sound());
+
+  //khoi tao
+  const cat = new Animal("cat");
+  cat.eat();
+  cat.hieuLon;
+
+  class Dog extends Animal {
+    private name: string;
+    private gender: string;
+    constructor(type: string, name: string, gender: string) {
+      super(type);
+      this.name = name;
+      this.gender = gender;
+    }
+
+    override eat() {
+      console.log("an chicken");
+    }
+  }
+  //khoi tao
+  const dogNormal = new Dog("SD", "Huyed", "male");
+
+  dogNormal.eat();
+  dogNormal.getType;
+};
+
+export const learnAbstraction = () => {
+  abstract class Rikkei {
+    private taxCode: string;
+    private stakeholders: any[];
+    constructor(taxCode: string) {
+      this.taxCode = taxCode;
+      this.stakeholders = [
+        { name: "Nguyen Van A", age: 23 },
+        { name: "Nguyen Van B", age: 30 },
+      ];
+    }
+    private showTaxCode() {
+      console.log(`Rikkei Tax Code is ${this.taxCode}`);
+    }
+    abstract payTaxes(): void;
+  }
+
+  //khoi tao 1 doi tuong tu class
+  // const nhanRikkei = new Rikkei("3000")
+
+  //tinh nang thu 4
+  class RikkeiHN extends Rikkei {
+    private name: string;
+    constructor(name: string) {
+      super("override");
+      this.name = name;
+    }
+    override payTaxes(): void {
+      console.log("pay taxes");
+    }
+  }
+
+  abstract class RikkeiDN extends Rikkei {
+    private name: string;
+    constructor(name: string) {
+      super("hash"); // => cho phep su dung nhung method cua thang
+      this.name = name;
+    }
+
+    override payTaxes(): void {}
+  }
+
+  //Interface
+  interface ISales {
+    name: string;
+    sale: () => void;
+  }
+  interface IMarketing {
+    name: string;
+    marketing: () => number;
+  }
+
+  interface IWebDev extends IMarketing, ISales {
+    age: string;
+    dev: () => void;
+  }
+
+  class RK implements IWebDev {
+    name: string;
+    age: string;
+    constructor(name: string, age: string) {
+      this.name = name;
+      this.age = age;
+    }
+    sale() {
+      return "ss";
+    }
+    marketing(): number {
+      console.log("marketing");
+      return 1;
+    }
+    dev() {
+      console.log("dev");
+    }
+  }
+};
