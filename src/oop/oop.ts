@@ -123,10 +123,10 @@ export const learnInheritance = () => {
 
   // console.log(Animal.eat());
   console.log(Animal.sound());
-
   //khoi tao
   const cat = new Animal("cat");
   cat.eat();
+  // cat.sound();
   cat.hieuLon;
 
   class Dog extends Animal {
