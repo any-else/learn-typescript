@@ -412,3 +412,21 @@ console.log(validAnagram("anagram", "naagram"));
 import { learnInheritance } from "./oop/oop";
 
 learnInheritance();
+
+import { LinkedListData } from "./algo/linkedlist";
+
+const linkedListStudent = new LinkedListData();
+
+linkedListStudent.unshift(1);
+linkedListStudent.unshift(2);
+linkedListStudent.unshift(3);
+
+console.log(
+  "head cuả kiễu dữ liệu linkedlist này là: ",
+  linkedListStudent.getHead()
+);
+
+console.log("get tail", linkedListStudent.getTail());
+
+import { learnTypeAdvance } from "./type-advance/typeGuard";
+learnTypeAdvance();

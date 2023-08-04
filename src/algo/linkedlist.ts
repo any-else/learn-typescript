@@ -13,12 +13,12 @@ class NodeLinkedList implements INodeLL {
   }
 }
 
-class LinkedListData {
+export class LinkedListData {
   private head: INodeLL | null;
   private tail: INodeLL | null;
-  constructor(head: INodeLL | null, tail: INodeLL | null) {
-    this.head = head;
-    this.tail = tail;
+  constructor() {
+    this.head = null;
+    this.tail = null;
   }
 
   //build ra nhung phuong thuc thang array minh cung co
@@ -26,14 +26,22 @@ class LinkedListData {
     if (this.head == null) {
       return null;
     }
-    return this.head;
+    return this.head.data;
   }
 
   getTail(): INodeLL | null {
-    return this.tail;
+    if (this.head == null) {
+      return null;
+    }
+    let tail = this.head;
+    while (tail?.pointer != null) {
+      tail = tail.pointer;
+    }
+    return tail.data;
   }
 
-  insertHead(newData: any) {
+  //insertHead
+  unshift(newData: any) {
     const newNode = new NodeLinkedList(newData);
     if (this.head == null) {
       this.head = newNode;
@@ -41,5 +49,31 @@ class LinkedListData {
     }
     newNode.pointer = this.head;
     this.head = newNode;
+  }
+
+  //insertTail
+  push(data: any) {
+    if (this.head == null) {
+      this.head = data;
+      return;
+    }
+    let tail = this.head;
+    while (tail?.pointer != null) {
+      tail = tail.pointer;
+    }
+    tail.pointer = data;
+    return this.head;
+  }
+  print() {
+    //kiểm tra xem head có bị null hay không ?
+    if (this.head == null) return;
+    //tạo một giá trị mới để thực hiện việc hiện thị bằng việc trỏ tới các node
+    //ví dụ array thì mình phải lặp qua từng phần tử
+    //object thì đơn giản thì chấm tới là được
+    let current = this.head;
+    while (current?.pointer != null) {
+      console.log(current.data);
+      current = current.pointer;
+    }
   }
 }
