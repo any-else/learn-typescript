@@ -51,10 +51,51 @@ export const learnES6 = () => {
   ];
 
   // điểm trung bình tổng của cả lớp
-  // điểm
+  // điểm trung bình tổng của giới tính nam
+  //điểm trung bình của giới tính nữ
   //c1:
   const averagePoint =
     studentListPoint.reduce((sum, student) => sum + student.point, 0) /
     studentListPoint.length;
   console.log("trung bình =>", averagePoint);
+
+  //c1:
+  //filter nam
+  const filterBoy = studentListPoint.filter(
+    (student) => student.gender === "M"
+  );
+  filterBoy.reduce((sum, student) => sum + student.point, 0) / filterBoy.length;
+  //filter nữ
+  const filterGirl = studentListPoint.filter(
+    (student) => student.gender === "F"
+  );
+  filterGirl.reduce((sum, student) => sum + student.point, 0) /
+    filterGirl.length;
+
+  //c2:
+  //kiểm tra
+  const isCheckBoy = (data: IStudentPoint) => data.gender == "M"; //đây là function
+  const isCheckGirls = (data: IStudentPoint) => data.gender == "F"; //đây là function
+  //filter
+  const filterBoy2 = (data: IStudentPoint[]) => {
+    return studentListPoint.filter(isCheckBoy);
+  }; // function filter
+
+  const filterGirl2 = (data: IStudentPoint[]) => {
+    return studentListPoint.filter(isCheckGirls);
+  };
+
+  //HOF => nhận đầu vào là một function => trả về một function
+  const avgPoint2 = (callback: any) => {
+    console.log("callback", callback);
+    return (
+      callback.reduce((sum: any, student: any) => sum + student.point, 0) /
+      callback.length
+    );
+  };
+
+  const avgTotalBoy = avgPoint2(filterBoy2(studentListPoint));
+  console.log("trung bình nam", avgTotalBoy);
+  const avgTOtalGirl = avgPoint2(filterGirl2(studentListPoint));
+  console.log("trung binh nu", avgTOtalGirl);
 };
