@@ -1,4 +1,3 @@
-import { type } from "os";
 export const learnOOP = () => {
   //class Cha
   class Human {
@@ -225,3 +224,4 @@ export const learnAbstraction = () => {
     }
   }
 };
+ 

@@ -430,3 +430,26 @@ console.log("get tail", linkedListStudent.getTail());
 
 import { learnTypeAdvance } from "./type-advance/typeGuard";
 learnTypeAdvance();
+
+import { learnRecord } from "./utility-type/Record";
+
+learnRecord();
+
+import { studentList } from "./generics/generics";
+
+studentList<string, number>("bui van vu", 23);
+
+studentList<boolean, null>(true, null);
+
+studentList<Array<number>, string>([1, 2, 4], "bui van vu");
+studentList<Array<number> | number, string>([1, 2, 4], "bui van vu");
+
+// import { learnDecorator } from "./decorator/decorator";
+
+// learnDecorator();
+
+// import learnRxjs from "./rxjs/rxjs";
+// learnRxjs();
+
+import { learnES6 } from "./es6/hof";
+learnES6();
